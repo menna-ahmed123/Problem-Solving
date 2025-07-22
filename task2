@@ -1,0 +1,51 @@
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+  Random random = Random();
+  int level = 1;
+  int ans;
+  int c1 = 0;
+  int c2 = 0;
+  while (true) {
+    int x = random.nextInt(level * 10) + 1;
+    int y = random.nextInt(level * 10) + 1;
+
+    List<String> operations = ['+', '-', '*', '/'];
+    int op = random.nextInt(operations.length);
+
+    print("$x ${operations[op]} $y");
+    ans = int.parse(stdin.readLineSync()!);
+    String user;
+    switch (operations[op]) {
+      case '+':
+        x + y == ans ? c1++ : c2++;
+        break;
+      case '-':
+        x - y == ans ? c1++ : c2++;
+        break;
+      case '*':
+        x * y == ans ? c1++ : c2++;
+        break;
+      case '/':
+        x / y == ans ? c1++ : c2++;
+        break;
+    }
+    print("want continue?");
+    user = stdin.readLineSync()!;
+    if (user == "yes")
+      continue;
+    else if (user == 'no')
+      break;
+    else
+      print("invalid");
+  }
+  print("Correct answers: $c1");
+  print(" Wrong answers: $c2");
+  int percentage = c1 * 100 ~/ c1 + c2;
+  if (percentage >= 50) {
+    print("Congratulations! You passed  with a score of $percentage%.");
+  } else {
+    print("work hard. Your score is $percentage%.");
+  }
+}
