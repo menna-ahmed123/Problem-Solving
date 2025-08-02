@@ -1,0 +1,43 @@
+import 'dart:ffi';
+import 'dart:io';
+
+void main(List<String> args) {}
+void user() {
+  print("Enter operation (+, -, *, div): ");
+  String ch;
+  ch = stdin.readLineSync()!;
+  switch (ch) {
+    case '+':
+      add(3, 2);
+      break;
+
+    case '-':
+      sub(3, 2);
+      break;
+    case '*':
+      mul(3, 2);
+      break;
+    case 'div':
+      div(3, 2);
+      break;
+  }
+}
+
+int add(x, y) {
+  return x + y;
+}
+
+int sub(x, y) {
+  return x - y;
+}
+
+int mul(x, y) {
+  return x * y;
+}
+
+int div(x, y) {
+  if (y != 0)
+    return x ~/ y;
+  else
+    return 0;
+}
